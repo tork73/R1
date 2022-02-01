@@ -1,0 +1,1007 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vi laster inn data fra internett &#8212; Matematikk R1</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Dataserier og datarammer" href="data-pandas.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Matematikk R1</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Matematikk R1
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="innledning-programmering.html">
+   Installasjon av Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="data-pandas.html">
+   Dataserier og datarammer
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Vi laster inn data fra internett
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/laste-inn-data.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Flaste-inn-data.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/laste-inn-data.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#eksempel-1">
+   Eksempel 1
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#losning">
+     Løsning:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#eksempel-2">
+   Eksempel 2
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#oppgave">
+   Oppgave
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#eksempel-3">
+   Eksempel 3
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Vi laster inn data fra internett</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#eksempel-1">
+   Eksempel 1
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#losning">
+     Løsning:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#eksempel-2">
+   Eksempel 2
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#oppgave">
+   Oppgave
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#eksempel-3">
+   Eksempel 3
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="vi-laster-inn-data-fra-internett">
+<h1>Vi laster inn data fra internett<a class="headerlink" href="#vi-laster-inn-data-fra-internett" title="Permalink to this headline">¶</a></h1>
+<p>Vi kan finne datafiler lagt ut på nettet. Disse kan vi laste inn i Python på en elegant måte ved å bruke pandas. Vi viser ved hjelp av en del eksempler.</p>
+<div class="section" id="eksempel-1">
+<h2>Eksempel 1<a class="headerlink" href="#eksempel-1" title="Permalink to this headline">¶</a></h2>
+<p>Filen <a class="reference external" href="https://vincentarelbundock.github.io/Rdatasets/csv/quantreg/gasprice.csv">https://vincentarelbundock.github.io/Rdatasets/csv/quantreg/gasprice.csv</a> innhol- der tidsserie for ukentlige bensinpriser i USA i perioden 1990:8-2003:26</p>
+<p>a) Lag en grafisk framstilling av hele tidsserien.</p>
+<p>b) Lag en grafiske gramstilling der du kun ser på årene 2000-2003.</p>
+<div class="section" id="losning">
+<h3>Løsning:<a class="headerlink" href="#losning" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>             <span class="c1"># For å lese og behandle CSV-filer</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span> <span class="c1"># For plotting</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://vincentarelbundock.github.io/Rdatasets/csv/quantreg/gasprice.csv&quot;</span>
+<span class="c1"># Vi leser inn data fra URLen og lagrer det i en dataframe som vi kaller df:</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>time</th>
+      <th>value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>1990.134615</td>
+      <td>126.6</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1990.153846</td>
+      <td>127.2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1990.173077</td>
+      <td>132.1</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1990.192308</td>
+      <td>133.3</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1990.211538</td>
+      <td>133.9</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>691</th>
+      <td>2003.403846</td>
+      <td>157.9</td>
+    </tr>
+    <tr>
+      <th>692</th>
+      <td>2003.423077</td>
+      <td>160.4</td>
+    </tr>
+    <tr>
+      <th>693</th>
+      <td>2003.442308</td>
+      <td>159.1</td>
+    </tr>
+    <tr>
+      <th>694</th>
+      <td>2003.461538</td>
+      <td>160.9</td>
+    </tr>
+    <tr>
+      <th>695</th>
+      <td>2003.480769</td>
+      <td>161.7</td>
+    </tr>
+  </tbody>
+</table>
+<p>695 rows × 2 columns</p>
+</div></div></div>
+</div>
+<p>Vi kan nå plotte disse tallene ved å bruke time på x-aksen og value på y-aksen. Dette kan gjøres ved å bruke plt.plot(). Vi kan også bruke en egen plotte-metode på datarammen df som pandas gir oss. Vi viser begge metodene.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Metode 1</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">]</span> <span class="c1"># x er en liste med datoer</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;value&quot;</span><span class="p">]</span> <span class="c1"># y er en liste med priser</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Dato&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Pris&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/laste-inn-data_4_0.png" src="_images/laste-inn-data_4_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Metode 2</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Dato&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Pris&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/laste-inn-data_5_0.png" src="_images/laste-inn-data_5_0.png" />
+</div>
+</div>
+<p>Vi kan finne gjennomsnittsprisen for disse årene ved å bruke pandas mean-metode på datarammen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;value&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>120.7546762589928
+</pre></div>
+</div>
+</div>
+</div>
+<p>Vi kunne også funnet gjennomsnittsprisen for årene 2000-2003:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Vi lager en ny dataramme som kun har med de rader vi ønsker å behandle:</span>
+<span class="n">D</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">]</span><span class="o">&gt;=</span><span class="mi">2000</span><span class="p">]</span>
+<span class="n">D</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>time</th>
+      <th>value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>514</th>
+      <td>2000.000000</td>
+      <td>145.6</td>
+    </tr>
+    <tr>
+      <th>515</th>
+      <td>2000.019231</td>
+      <td>150.2</td>
+    </tr>
+    <tr>
+      <th>516</th>
+      <td>2000.038462</td>
+      <td>153.5</td>
+    </tr>
+    <tr>
+      <th>517</th>
+      <td>2000.057692</td>
+      <td>153.9</td>
+    </tr>
+    <tr>
+      <th>518</th>
+      <td>2000.076923</td>
+      <td>152.5</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>691</th>
+      <td>2003.403846</td>
+      <td>157.9</td>
+    </tr>
+    <tr>
+      <th>692</th>
+      <td>2003.423077</td>
+      <td>160.4</td>
+    </tr>
+    <tr>
+      <th>693</th>
+      <td>2003.442308</td>
+      <td>159.1</td>
+    </tr>
+    <tr>
+      <th>694</th>
+      <td>2003.461538</td>
+      <td>160.9</td>
+    </tr>
+    <tr>
+      <th>695</th>
+      <td>2003.480769</td>
+      <td>161.7</td>
+    </tr>
+  </tbody>
+</table>
+<p>182 rows × 2 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">D</span><span class="p">[</span><span class="s2">&quot;value&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>141.87417582417586
+</pre></div>
+</div>
+</div>
+</div>
+<p>Vi ser at gjennomsnittsprisen i perioden 2000-2003 er 141.87 dollar.</p>
+</div>
+</div>
+<div class="section" id="eksempel-2">
+<h2>Eksempel 2<a class="headerlink" href="#eksempel-2" title="Permalink to this headline">¶</a></h2>
+<p>Filen <a class="reference external" href="https://vincentarelbundock.github.io/Rdatasets/csv/datasets/nottem.csv">https://vincentarelbundock.github.io/Rdatasets/csv/datasets/nottem.csv</a> har data fra Nottingham slott. Den har to kolonner. Den første er tiden (i år) og den andre er temperaturen målt i Fahrenheit.</p>
+<p>Vi ønsker å plotte temperaturen målt i grader Celsius som funksjon av tiden.</p>
+<p>Vi bruker da følgende formel for å regne om fra Fahrenheit til Celsius:
+$<span class="math notranslate nohighlight">\( C = \frac{5\cdot (F-32)}{9}\)</span>$</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Vi lager en dataramme med tallene fra filen:</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://vincentarelbundock.github.io/Rdatasets/csv/datasets/nottem.csv&quot;</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>time</th>
+      <th>value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>1920.000000</td>
+      <td>40.6</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1920.083333</td>
+      <td>40.8</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1920.166667</td>
+      <td>44.4</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1920.250000</td>
+      <td>46.7</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1920.333333</td>
+      <td>54.1</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>236</th>
+      <td>1939.583333</td>
+      <td>61.8</td>
+    </tr>
+    <tr>
+      <th>237</th>
+      <td>1939.666667</td>
+      <td>58.2</td>
+    </tr>
+    <tr>
+      <th>238</th>
+      <td>1939.750000</td>
+      <td>46.7</td>
+    </tr>
+    <tr>
+      <th>239</th>
+      <td>1939.833333</td>
+      <td>46.6</td>
+    </tr>
+    <tr>
+      <th>240</th>
+      <td>1939.916667</td>
+      <td>37.8</td>
+    </tr>
+  </tbody>
+</table>
+<p>240 rows × 2 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Vi legger til kolonnen med temperaturen i Celsius. </span>
+
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;temperatur&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span><span class="o">*</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;value&quot;</span><span class="p">]</span><span class="o">-</span> <span class="mi">32</span><span class="p">)</span><span class="o">/</span><span class="mi">9</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>time</th>
+      <th>value</th>
+      <th>temperatur</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>1920.000000</td>
+      <td>40.6</td>
+      <td>4.777778</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1920.083333</td>
+      <td>40.8</td>
+      <td>4.888889</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1920.166667</td>
+      <td>44.4</td>
+      <td>6.888889</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1920.250000</td>
+      <td>46.7</td>
+      <td>8.166667</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1920.333333</td>
+      <td>54.1</td>
+      <td>12.277778</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>236</th>
+      <td>1939.583333</td>
+      <td>61.8</td>
+      <td>16.555556</td>
+    </tr>
+    <tr>
+      <th>237</th>
+      <td>1939.666667</td>
+      <td>58.2</td>
+      <td>14.555556</td>
+    </tr>
+    <tr>
+      <th>238</th>
+      <td>1939.750000</td>
+      <td>46.7</td>
+      <td>8.166667</td>
+    </tr>
+    <tr>
+      <th>239</th>
+      <td>1939.833333</td>
+      <td>46.6</td>
+      <td>8.111111</td>
+    </tr>
+    <tr>
+      <th>240</th>
+      <td>1939.916667</td>
+      <td>37.8</td>
+      <td>3.222222</td>
+    </tr>
+  </tbody>
+</table>
+<p>240 rows × 3 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s2">&quot;seaborn&quot;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;temperatur&quot;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;År&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/laste-inn-data_15_0.png" src="_images/laste-inn-data_15_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="oppgave">
+<h2>Oppgave<a class="headerlink" href="#oppgave" title="Permalink to this headline">¶</a></h2>
+<p>Hva var gjennomsnittstemperaturen i denne perioden?</p>
+</div>
+<div class="section" id="eksempel-3">
+<h2>Eksempel 3<a class="headerlink" href="#eksempel-3" title="Permalink to this headline">¶</a></h2>
+<p>På nettsiden <a class="reference external" href="http://seklima.met.no">seklima.met.no</a> kan du laste ned klima-data for ulike målestasjoner. I dette eksempelet skal vi se på hvor kraftig det blåste i vindkastene i tidsrommet 26.-31. januar 2022.</p>
+<p><img alt="vind-stord" src="_images/vindkast-stord.png" /></p>
+<p>Når vi har gjort de ulike valgene for hvilke data vi vil laste ned, så klikker vi på «Last ned» nederst til venstre på nettsiden. Velg csv-fil. Denne blir da lastet ned i din nedlastningsmappe (litt avhengig av nettleser og innstillinger). Pass på å ikke åpne denne filen med Excel. Dra så filen over i mappen som selve jupyter-filen din er lagret i.</p>
+<p><img alt="vindkst-last-ned" src="_images/last-ned1.png" /></p>
+<p>Vi kan nå importere denne filen inn i Python, plotte og gjøre beregninger.</p>
+<p>Når vi laster inn denne filen, får vi et par problemer. Vi må for det første spesifisere at verdiene skilles ved hjelp av semikolon. Dette gjør vi ved å skrive inn sep=”;”. Så får vi et lite problem ved at desimaltallene er gitt med komma, ikke punktum (som er standard i Python). Dette løser vi ved å skrive decimal=”,”.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;table.csv&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;;&quot;</span><span class="p">,</span> <span class="n">decimal</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Navn</th>
+      <th>Stasjon</th>
+      <th>Tid(norsk normaltid)</th>
+      <th>Høyeste vindkast (10 min)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>E39 Stordabrua</td>
+      <td>SN48070</td>
+      <td>25.01.2022 19:30</td>
+      <td>5.9</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>E39 Stordabrua</td>
+      <td>SN48070</td>
+      <td>25.01.2022 19:40</td>
+      <td>7.4</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>E39 Stordabrua</td>
+      <td>SN48070</td>
+      <td>25.01.2022 19:50</td>
+      <td>8.2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>E39 Stordabrua</td>
+      <td>SN48070</td>
+      <td>25.01.2022 20:00</td>
+      <td>9.7</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>E39 Stordabrua</td>
+      <td>SN48070</td>
+      <td>25.01.2022 20:10</td>
+      <td>11.2</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>855</th>
+      <td>E39 Stordabrua</td>
+      <td>SN48070</td>
+      <td>31.01.2022 18:30</td>
+      <td>10.1</td>
+    </tr>
+    <tr>
+      <th>856</th>
+      <td>E39 Stordabrua</td>
+      <td>SN48070</td>
+      <td>31.01.2022 18:40</td>
+      <td>10.1</td>
+    </tr>
+    <tr>
+      <th>857</th>
+      <td>E39 Stordabrua</td>
+      <td>SN48070</td>
+      <td>31.01.2022 18:50</td>
+      <td>12.3</td>
+    </tr>
+    <tr>
+      <th>858</th>
+      <td>E39 Stordabrua</td>
+      <td>SN48070</td>
+      <td>31.01.2022 19:00</td>
+      <td>12.5</td>
+    </tr>
+    <tr>
+      <th>859</th>
+      <td>Data er gyldig per 31.01.2022 (CC BY 4.0), Met...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>860 rows × 4 columns</p>
+</div></div></div>
+</div>
+<p>Vi ønsker nå å finne ut når vi hadde det høyeste vindkastet.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Høyeste vindkast (10 min)&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="n">m</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>35.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">859</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Høyeste vindkast (10 min)&quot;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">m</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Tid(norsk normaltid)&quot;</span><span class="p">][</span><span class="n">i</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>29.01.2022 23:50
+30.01.2022 00:00
+</pre></div>
+</div>
+</div>
+</div>
+<p>Vi må selvsagt også plotte dataene våre:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;Tid(norsk normaltid)&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Høyeste vindkast (10 min)&quot;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/laste-inn-data_23_0.png" src="_images/laste-inn-data_23_0.png" />
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="data-pandas.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Dataserier og datarammer</p>
+        </div>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Tor Espen Kristensen<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
