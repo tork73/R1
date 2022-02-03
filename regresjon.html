@@ -1,0 +1,826 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Regresjon med Python &#8212; Matematikk R1</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Vi laster inn data fra internett" href="laste-inn-data.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Matematikk R1</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Matematikk R1
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="innledning-programmering.html">
+   Installasjon av Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="loekker.html">
+   for og while-løkker
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="plotte.html">
+   Plotte med Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="data-pandas.html">
+   Dataserier og datarammer
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="laste-inn-data.html">
+   Vi laster inn data fra internett
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Regresjon med Python
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/regresjon.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fregresjon.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/regresjon.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#numpy-sin-polyfit">
+   numpy sin polyfit
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#eksempel-1">
+     Eksempel 1
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#oppgave-1">
+     Oppgave 1
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#eksempel-2">
+     Eksempel 2
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#oppgave-2">
+     Oppgave 2
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#scipy-optimize-sin-curve-fit">
+   scipy.optimize sin curve_fit
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#eksempel-3">
+     Eksempel 3
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#losning">
+     Løsning:
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#eksempel-4">
+     Eksempel 4
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#eksempel-5">
+     Eksempel 5
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#oppgave-3">
+     Oppgave 3
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Regresjon med Python</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#numpy-sin-polyfit">
+   numpy sin polyfit
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#eksempel-1">
+     Eksempel 1
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#oppgave-1">
+     Oppgave 1
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#eksempel-2">
+     Eksempel 2
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#oppgave-2">
+     Oppgave 2
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#scipy-optimize-sin-curve-fit">
+   scipy.optimize sin curve_fit
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#eksempel-3">
+     Eksempel 3
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#losning">
+     Løsning:
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#eksempel-4">
+     Eksempel 4
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#eksempel-5">
+     Eksempel 5
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#oppgave-3">
+     Oppgave 3
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="regresjon-med-python">
+<h1>Regresjon med Python<a class="headerlink" href="#regresjon-med-python" title="Permalink to this headline">¶</a></h1>
+<p>Du har kanskje tidligere gjort regresjoner med GeoGebra. Det vil si at du for eksempel har funnet en linje (eller annen type graf) som passer «best» med ulike punkt i koordinatsystemet. Slike regresjoner kan vi også gjøre med Python.</p>
+<p>Vi skal se på to måter å gjøre dette på. Den ene er å bruke nympy sin polyfit-funksjon. Den andre metoden er å bruke scipy.optimize sin curve_fit-funksjon.</p>
+<div class="section" id="numpy-sin-polyfit">
+<h2>numpy sin polyfit<a class="headerlink" href="#numpy-sin-polyfit" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="eksempel-1">
+<h3>Eksempel 1<a class="headerlink" href="#eksempel-1" title="Permalink to this headline">¶</a></h3>
+<p>Fem personer har gjennomført en såkalt makspulstest. Resultatet ser du i tabellen nedenfor.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Alder</p></th>
+<th class="text-align:right head"><p>17</p></th>
+<th class="text-align:right head"><p>25</p></th>
+<th class="text-align:right head"><p>37</p></th>
+<th class="text-align:right head"><p>48</p></th>
+<th class="text-align:right head"><p>60</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Makspuls</p></td>
+<td class="text-align:right"><p>195</p></td>
+<td class="text-align:right"><p>189</p></td>
+<td class="text-align:right"><p>183</p></td>
+<td class="text-align:right"><p>175</p></td>
+<td class="text-align:right"><p>166</p></td>
+</tr>
+</tbody>
+</table>
+<p>Finn en lineær sammenheng mellom alder (<span class="math notranslate nohighlight">\(x\)</span>) og makspuls (<span class="math notranslate nohighlight">\(y\)</span>).</p>
+<p><strong>Løsning</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">17</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">48</span><span class="p">,</span> <span class="mi">60</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">195</span><span class="p">,</span> <span class="mi">189</span><span class="p">,</span> <span class="mi">183</span><span class="p">,</span> <span class="mi">175</span><span class="p">,</span> <span class="mi">166</span><span class="p">]</span>
+<span class="n">L</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">L</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ -0.6605766  206.30556487]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Her får vi en liste som svar på oppgaven. Tallene i denne listen er koeffisienten til den linære funksjonen</p>
+<div class="math notranslate nohighlight">
+\[y=ax+b\]</div>
+<p>Det vil si at</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+ a&amp;=-0.6605766 \\
+ b&amp;=206.30556487    
+\end{align*}
+\end{split}\]</div>
+<p>Vi ønsker å plotte dataene fra tabellen sammen med grafen til den lineære funksjonen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">L</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="n">L</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># den lineære modellen</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span> <span class="c1"># x-verdier (trenger egenlit bare to stk... ) </span>
+
+<span class="c1"># Først spredningsplottet (punktene fra tabellen):</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+
+<span class="c1"># Så den lineære modellen:</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Alder&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Makspuls&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/regresjon_5_0.png" src="_images/regresjon_5_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="oppgave-1">
+<h3>Oppgave 1<a class="headerlink" href="#oppgave-1" title="Permalink to this headline">¶</a></h3>
+<p>Tabellen ovanfor viser kor mange personar som deltok i eit mosjonsløp i
+åra 2000, 2005, 2010, 2015 og 2020.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>År</p></th>
+<th class="text-align:right head"><p>2000</p></th>
+<th class="text-align:right head"><p>2005</p></th>
+<th class="text-align:right head"><p>2010</p></th>
+<th class="text-align:right head"><p>2015</p></th>
+<th class="text-align:right head"><p>2020</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Antall deltakere</p></td>
+<td class="text-align:right"><p>35</p></td>
+<td class="text-align:right"><p>152</p></td>
+<td class="text-align:right"><p>240</p></td>
+<td class="text-align:right"><p>338</p></td>
+<td class="text-align:right"><p>475</p></td>
+</tr>
+</tbody>
+</table>
+<p>a) La <span class="math notranslate nohighlight">\(x\)</span> vere antal år etter 2000, og bruk regresjon til å bestemme
+ein lineær funksjon <span class="math notranslate nohighlight">\(M\)</span> som kan beskrive utviklinga i perioden
+2000-2020.</p>
+<p>b)  Kva fortel stigingstalet til funksjonen M om den praktiske</p>
+</div>
+<div class="section" id="eksempel-2">
+<h3>Eksempel 2<a class="headerlink" href="#eksempel-2" title="Permalink to this headline">¶</a></h3>
+<p>Arne har sommerjobb som montør i en bedrift som produserer en bestemt type pumper. Han har lagt merke til at arbeidstempoet endrer seg i løpet av dagen. En dag teller han opp annenhver time hvor mange pumper han har montert så langt den dagen. Tabellen nedenfor viser resultatet</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p>Timer jobbet</p></th>
+<th class="text-align:right head"><p>0</p></th>
+<th class="text-align:right head"><p>2</p></th>
+<th class="text-align:right head"><p>4</p></th>
+<th class="text-align:right head"><p>6</p></th>
+<th class="text-align:right head"><p>8</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p>Antall deltakere</p></td>
+<td class="text-align:right"><p>0</p></td>
+<td class="text-align:right"><p>38</p></td>
+<td class="text-align:right"><p>93</p></td>
+<td class="text-align:right"><p>135</p></td>
+<td class="text-align:right"><p>169</p></td>
+</tr>
+</tbody>
+</table>
+<p>Bruk regresjon til å lage et tredjegradspolynom <span class="math notranslate nohighlight">\(g\)</span> som kan brukes som modell for hvor mange pumper Arne setter sammen i løpet av de <span class="math notranslate nohighlight">\(x\)</span> første timene på jobb en dag.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">38</span><span class="p">,</span> <span class="mi">93</span><span class="p">,</span> <span class="mi">135</span><span class="p">,</span> <span class="mi">169</span><span class="p">]</span>
+
+<span class="n">L</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">L</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-0.26041667,  2.75      , 15.79166667, -0.5       ])
+</pre></div>
+</div>
+</div>
+</div>
+<p>I stedet for å definere tredjegradspolynomet manuelt (L[0]*x**3+…), så kan vi bruke funksjonen np.polyval(p, x). Denne evaluerer alle x-verdiene i en liste x med polynomet p. I vårt tilfelle er x-verdiene i listen X og polynomet er L.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">polyval</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">X</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;g&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Antall timer jobbet&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Antall pumper&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/regresjon_11_0.png" src="_images/regresjon_11_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="oppgave-2">
+<h3>Oppgave 2<a class="headerlink" href="#oppgave-2" title="Permalink to this headline">¶</a></h3>
+<p>En bedrift produserer en bestemt vare. Tabellen nedenfor viser sammenhengen mellom antall
+produserte enheter av varen per uke og de totale kostnadene.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p>Antall produserte enhet per uke, <span class="math notranslate nohighlight">\(x\)</span></p></th>
+<th class="text-align:right head"><p>80</p></th>
+<th class="text-align:right head"><p>120</p></th>
+<th class="text-align:right head"><p>170</p></th>
+<th class="text-align:right head"><p>330</p></th>
+<th class="text-align:right head"><p>420</p></th>
+<th class="text-align:right head"><p>700</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p>Totale kostnader i kroner, <span class="math notranslate nohighlight">\(K(x)\)</span></p></td>
+<td class="text-align:right"><p>27 000</p></td>
+<td class="text-align:right"><p>31 000</p></td>
+<td class="text-align:right"><p>36 500</p></td>
+<td class="text-align:right"><p>59 000</p></td>
+<td class="text-align:right"><p>74500</p></td>
+<td class="text-align:right"><p>137 000</p></td>
+</tr>
+</tbody>
+</table>
+<p>Bestem en andregradsfunksjon <span class="math notranslate nohighlight">\(K\)</span> som med god tilnærming kan brukes til å beregne kostnadene <span class="math notranslate nohighlight">\(K(x)\)</span>. Hva blir kostnadene i en uke der det produseres 220 enheter?</p>
+</div>
+</div>
+<div class="section" id="scipy-optimize-sin-curve-fit">
+<h2>scipy.optimize sin curve_fit<a class="headerlink" href="#scipy-optimize-sin-curve-fit" title="Permalink to this headline">¶</a></h2>
+<p>Dersom du vil bruke andre modeller enn polynomer, så må vi ty til et annet verktøy. Modulen scipy.optimize har den nyttige funksjon curve_fit. Med denne er har du så og si ubegrensede muligheter.</p>
+<div class="section" id="eksempel-3">
+<h3>Eksempel 3<a class="headerlink" href="#eksempel-3" title="Permalink to this headline">¶</a></h3>
+<p>Vi antar at konsentrasjonen av CO<span class="math notranslate nohighlight">\(_2\)</span> i lufta var 280 ppm (parts per million) i året 1800. Siden den gang har konsentrasjonen økt. Tabellen nedenfor viser utviklingen av CO<span class="math notranslate nohighlight">\(_2\)</span>–konsentrasjonen for noen utvalgte år mellom 1870 og 2000.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p>År</p></th>
+<th class="head"><p>1870</p></th>
+<th class="head"><p>1890</p></th>
+<th class="head"><p>1930</p></th>
+<th class="head"><p>1950</p></th>
+<th class="head"><p>1970</p></th>
+<th class="head"><p>2000</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p>CO<span class="math notranslate nohighlight">\(_2\)</span> konsentrasjon (ppm)</p></td>
+<td><p>285</p></td>
+<td><p>287</p></td>
+<td><p>295</p></td>
+<td><p>305</p></td>
+<td><p>325</p></td>
+<td><p>365</p></td>
+</tr>
+</tbody>
+</table>
+<p>Lag en modell for CO<span class="math notranslate nohighlight">\(_2\)</span>-konsentrasjonen i lufta <span class="math notranslate nohighlight">\(x\)</span> år etter 1870.</p>
+</div>
+<div class="section" id="losning">
+<h3>Løsning:<a class="headerlink" href="#losning" title="Permalink to this headline">¶</a></h3>
+<p>Et spredningsdiagram vil vise at CO<span class="math notranslate nohighlight">\(_2\)</span>-konsentrasjonen ser ut til å følge en eksponentiell modell:</p>
+<div class="math notranslate nohighlight">
+\[ f(x)=a \cdot b^x + c \]</div>
+<p>Det vi gjør er å først imprtere curve_fit (linje 3 nedenfor), og så definerer modellen vi ønsker å bruke (linje 4 og 5). Vi lager da en funksjon med fire variabler (x, a, b, c). Regresjonen skal nå tilpasse a, b og c til dataene (som vi har ført unn på rad 8 og 9).</p>
+<p>På linje 11 har vi skrevet L, V = curve_fit(f, x, y). Dette gjør vi siden commandoen curve_fit(f, x, y) returnerer to arrayer. Vi kaller disse for L og V. L er en liste bestående av tallene a, b og c, mens V er en liste som inneholder litt statistiske data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">curve_fit</span>
+
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">a</span><span class="o">*</span><span class="n">b</span><span class="o">**</span><span class="n">x</span> <span class="o">+</span> <span class="n">c</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">130</span><span class="p">]</span>      <span class="c1"># x-verdier fra tabellen</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">285</span><span class="p">,</span> <span class="mi">287</span><span class="p">,</span> <span class="mi">295</span><span class="p">,</span> <span class="mi">305</span><span class="p">,</span> <span class="mi">325</span><span class="p">,</span> <span class="mi">365</span><span class="p">]</span> <span class="c1"># y-verdier fra tabellen</span>
+
+<span class="n">L</span><span class="p">,</span> <span class="n">V</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="mi">140</span><span class="p">)</span>   <span class="c1"># x-verdier for plotting</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="o">*</span><span class="n">L</span><span class="p">)</span>                <span class="c1"># y-verdier for plotting</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>           <span class="c1"># punktene fra tabellen</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">)</span>   <span class="c1"># Modellen vår</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/regresjon_16_0.png" src="_images/regresjon_16_0.png" />
+</div>
+</div>
+<p>Vi ser at modellen passer bra.</p>
+<p>Legg merke til at vi har skrevet *L på linje 14. En stjerne foran en liste eller array vil resultere i at det er verdiene fra listen som blir plukket ut, objekt for objekt. Funksjonen f tar fire arguementer (x, a, b, c). Hadde vi skrivet f(x, L), så hadde vi bare gitt to argumenter.</p>
+</div>
+<div class="section" id="eksempel-4">
+<h3>Eksempel 4<a class="headerlink" href="#eksempel-4" title="Permalink to this headline">¶</a></h3>
+<p>Vi viser et eksempel for å illustere hva *L betyr.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">L</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="s2">&quot;Hei&quot;</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">]</span>  <span class="c1"># Lager en liste med ulike verdier</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Her er listen:&quot;</span><span class="p">,</span> <span class="n">L</span><span class="p">)</span> <span class="c1"># Skriver ut listen</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Her er elementene i listen:&quot;</span><span class="p">,</span> <span class="o">*</span><span class="n">L</span><span class="p">)</span> <span class="c1"># Skriver ut elementene fra listen</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Her er listen: [1, 5, &#39;Hei&#39;, -3]
+Her er elementene i listen: 1 5 Hei -3
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="eksempel-5">
+<h3>Eksempel 5<a class="headerlink" href="#eksempel-5" title="Permalink to this headline">¶</a></h3>
+<p>Filen temp.csv inneholder data fra målinger av temperatur i et kar. (<a class="reference external" href="https://tork73.github.io/Data_behandling/temp.csv">https://tork73.github.io/Data_behandling/temp.csv</a>)</p>
+<p>a) Last inn data fra filen og plott temperaturen som funksjon av tiden.</p>
+<p>b) Lag en modell for temperaturen ved å bruke regresjon. Plott denne modellen i et koordinatsystem sammen med plottet fra oppgave a).</p>
+<p>c) Plott den deriverte til temperaturen som funksjon av tiden.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">curve_fit</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://tork73.github.io/Data_behandling/temp.csv&quot;</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">a</span><span class="o">*</span><span class="n">b</span><span class="o">**</span><span class="n">x</span> <span class="o">+</span> <span class="n">c</span>
+
+<span class="n">L</span><span class="p">,</span> <span class="n">V</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Tid&quot;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Temp&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">L</span><span class="p">)</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s2">&quot;Tid&quot;</span><span class="p">,</span> <span class="s2">&quot;Temp&quot;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;scatter&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Tid&quot;</span><span class="p">],</span> <span class="n">f</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Tid&quot;</span><span class="p">],</span> <span class="o">*</span><span class="n">L</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hlines</span><span class="p">(</span><span class="n">L</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">6000</span><span class="p">,</span> <span class="n">linestyles</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">90</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[54.83915916  0.99942834 27.72997518]
+</pre></div>
+</div>
+<img alt="_images/regresjon_21_1.png" src="_images/regresjon_21_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Så plotter vi den deriverte av modellen og den deriverte ut fra datasettet:</span>
+
+<span class="n">D</span> <span class="o">=</span> <span class="p">[]</span>      <span class="c1"># Lager en tom liste som skal bestå av de ulike stigningetallene fra datasettet</span>
+<span class="n">Tid</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Tid&quot;</span><span class="p">]</span>   <span class="c1"># Plukker ut tidene fra datasetet</span>
+<span class="n">Temp</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Temp&quot;</span><span class="p">]</span> <span class="c1"># Plukker ut temperaturene fra datasettet</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">Tid</span><span class="p">)):</span>        <span class="c1"># Bestemmer stigningstallene i hvert delintervall</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="p">(</span><span class="n">Temp</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">Temp</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">/</span><span class="p">(</span><span class="n">Tid</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">Tid</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="n">D</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+
+<span class="c1"># Lager selve funksjonen (modellen)</span>
+<span class="k">def</span> <span class="nf">F</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">*</span><span class="n">L</span><span class="p">)</span>
+
+<span class="c1"># Den deriverte av funksjonen</span>
+<span class="k">def</span> <span class="nf">dF</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mf">0.00001</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">h</span><span class="p">)</span><span class="o">-</span><span class="n">F</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="o">/</span><span class="n">h</span>
+
+<span class="c1"># Plotter dataene: </span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Tid</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">D</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Stigningstallene&quot;</span><span class="p">)</span>   <span class="c1"># Plotter stigningstallene</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Tid</span><span class="p">,</span> <span class="n">dF</span><span class="p">(</span><span class="n">Tid</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$F&#39;$ &quot;</span><span class="p">)</span>  <span class="c1"># Plotter den deriverte av modellen</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/regresjon_22_0.png" src="_images/regresjon_22_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="oppgave-3">
+<h3>Oppgave 3<a class="headerlink" href="#oppgave-3" title="Permalink to this headline">¶</a></h3>
+<p>Temperaturen i en kopp kaffe blir målt hvert fjerde minutt. Resultatene av
+målingene er vist i tabellen nedenfor.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Tid</p></th>
+<th class="head"><p>0</p></th>
+<th class="head"><p>4</p></th>
+<th class="head"><p>8</p></th>
+<th class="head"><p>12</p></th>
+<th class="head"><p>16</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Temp</p></td>
+<td><p>70</p></td>
+<td><p>53</p></td>
+<td><p>42</p></td>
+<td><p>35</p></td>
+<td><p>30</p></td>
+</tr>
+</tbody>
+</table>
+<p>Lag et spredningsdiagram av tallene i tabellen og bestem en modell som passer med tallen.</p>
+<p>Hva er temperaturen i koppen etter 20 minutter ifølge modellen du laget?</p>
+<p>Hvor lang tid går det før temperaturen er 25 grader ifølge modellen?</p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="laste-inn-data.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Vi laster inn data fra internett</p>
+        </div>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Tor Espen Kristensen<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
