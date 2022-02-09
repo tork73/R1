@@ -1447,7 +1447,12 @@ Laveste vekt er 44.4 kg
 <p>I vårt eksempel betyr dette at vi må regne ut endring i posisjon, delt på endring i tid. Vi lager derfor en ny liste som vi kaller Fart. I denne legger vi inn alle gjennomsnittsfartene. Vi lager også en liste som vi kaller Tid. I denne legger vi inn midtpunktet til tidspunktene.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># c)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;tags&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;hide-input&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+<span class="c1"># c)</span>
 <span class="n">Fart</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># Denne skal vi fylle med fartene. </span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
     <span class="n">v</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Posisjon(m)&quot;</span><span class="p">][</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Posisjon(m)&quot;</span><span class="p">][</span><span class="n">i</span><span class="p">])</span><span class="o">/</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Tid(s)&quot;</span><span class="p">][</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Tid(s)&quot;</span><span class="p">][</span><span class="n">i</span><span class="p">])</span>
