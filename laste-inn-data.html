@@ -251,13 +251,28 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#oppgave">
-   Oppgave
+  <a class="reference internal nav-link" href="#oppgave-1">
+   Oppgave 1
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#eksempel-3">
    Eksempel 3
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#eksempel-4">
+   Eksempel 4
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#eksempel-5">
+   Eksempel 5
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#oppgave-2">
+   Oppgave 2
   </a>
  </li>
 </ul>
@@ -298,13 +313,28 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#oppgave">
-   Oppgave
+  <a class="reference internal nav-link" href="#oppgave-1">
+   Oppgave 1
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#eksempel-3">
    Eksempel 3
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#eksempel-4">
+   Eksempel 4
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#eksempel-5">
+   Eksempel 5
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#oppgave-2">
+   Oppgave 2
   </a>
  </li>
 </ul>
@@ -799,8 +829,8 @@
 </div>
 </div>
 </div>
-<div class="section" id="oppgave">
-<h2>Oppgave<a class="headerlink" href="#oppgave" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="oppgave-1">
+<h2>Oppgave 1<a class="headerlink" href="#oppgave-1" title="Permalink to this headline">¶</a></h2>
 <p>Hva var gjennomsnittstemperaturen i denne perioden?</p>
 </div>
 <div class="section" id="eksempel-3">
@@ -968,6 +998,478 @@
 </div>
 <div class="cell_output docutils container">
 <img alt="_images/laste-inn-data_23_0.png" src="_images/laste-inn-data_23_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="eksempel-4">
+<h2>Eksempel 4<a class="headerlink" href="#eksempel-4" title="Permalink to this headline">¶</a></h2>
+<p>Filen <a class="reference external" href="https://tork73.github.io/Data_behandling/vekt.txt">https://tork73.github.io/Data_behandling/vekt.txt</a>
+inneholder vekten til 100 personer.</p>
+<p>a) Bestem gjennomsnittsvekten til personene</p>
+<p>b)  Hva er den største vekten? Hva er den laveste?</p>
+<p>c)  Illustrer tallene i et histogram.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://tork73.github.io/Data_behandling/vekt.txt&quot;</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Vekt&quot;</span><span class="p">])</span>
+
+<span class="c1"># a)</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Vekt&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Gjennomsnittsvekten er </span><span class="si">{</span><span class="n">m</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> kg&quot;</span><span class="p">)</span>
+
+<span class="c1"># b)</span>
+<span class="n">s</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Vekt&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Største vekt er </span><span class="si">{</span><span class="n">s</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> kg&quot;</span><span class="p">)</span>
+
+<span class="n">minste</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Vekt&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Laveste vekt er </span><span class="si">{</span><span class="n">minste</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> kg&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gjennomsnittsvekten er 81.8 kg
+Største vekt er 116.1 kg
+Laveste vekt er 44.4 kg
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Vekt&quot;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">130</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>  <span class="c1"># bins er en liste med tall eller et helt tall </span>
+         <span class="n">color</span><span class="o">=</span><span class="s2">&quot;Royalblue&quot;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> 
+         <span class="c1"># density=True gir en histogram med samlet areal lik 1</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Vekt (kg)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Histogram&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/laste-inn-data_26_0.png" src="_images/laste-inn-data_26_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="eksempel-5">
+<h2>Eksempel 5<a class="headerlink" href="#eksempel-5" title="Permalink to this headline">¶</a></h2>
+<p>Filen <code class="docutils literal notranslate"><span class="pre">https://tork73.github.io/Data_behandling/2017luft.txt</span></code> inneholder målinter for temperaturen en plass gjennom et hele 2017. Den består av fem måliner for hver dag. Målingene er gjort klokken 00, 12, 15, 18 og 21.</p>
+<p>Plott temperaturen gjennom hele året.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://tork73.github.io/Data_behandling/2017luft.txt&quot;</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Tid</th>
+      <th>Nr</th>
+      <th>Lufttemperatur</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2017.01.01.00</td>
+      <td>1</td>
+      <td>2.1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2017.01.01.12</td>
+      <td>2</td>
+      <td>2.4</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2017.01.01.15</td>
+      <td>3</td>
+      <td>2.3</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2017.01.01.18</td>
+      <td>4</td>
+      <td>1.3</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2017.01.01.21</td>
+      <td>5</td>
+      <td>-0.3</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2255</th>
+      <td>2017.12.17.09</td>
+      <td>2256</td>
+      <td>-0.2</td>
+    </tr>
+    <tr>
+      <th>2256</th>
+      <td>2017.12.17.12</td>
+      <td>2257</td>
+      <td>0.8</td>
+    </tr>
+    <tr>
+      <th>2257</th>
+      <td>2017.12.18.15</td>
+      <td>2258</td>
+      <td>2.4</td>
+    </tr>
+    <tr>
+      <th>2258</th>
+      <td>2017.12.28.18</td>
+      <td>2259</td>
+      <td>-1.1</td>
+    </tr>
+    <tr>
+      <th>2259</th>
+      <td>2017.12.28.21</td>
+      <td>2260</td>
+      <td>-0.9</td>
+    </tr>
+  </tbody>
+</table>
+<p>2260 rows × 3 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;Tid&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Lufttemperatur&quot;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/laste-inn-data_29_0.png" src="_images/laste-inn-data_29_0.png" />
+</div>
+</div>
+<p>##$ Ekempel 6</p>
+<p>Filen <a class="reference external" href="https://vincentarelbundock.github.io/Rdatasets/csv/quantreg/gasprice.csv">https://vincentarelbundock.github.io/Rdatasets/csv/quantreg/gasprice.csv</a> innholder tidsserie for ukentlige bensinpriser i USA i perioden 1990:8-2003:26</p>
+<p>a) Lag en grafisk framstilling av hele tidsserien.</p>
+<p>b) Lag en grafiske gramstilling der du kun ser på årene 2000-2003.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://vincentarelbundock.github.io/Rdatasets/csv/quantreg/gasprice.csv&quot;</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>time</th>
+      <th>value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>1990.134615</td>
+      <td>126.6</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1990.153846</td>
+      <td>127.2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1990.173077</td>
+      <td>132.1</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1990.192308</td>
+      <td>133.3</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1990.211538</td>
+      <td>133.9</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>691</th>
+      <td>2003.403846</td>
+      <td>157.9</td>
+    </tr>
+    <tr>
+      <th>692</th>
+      <td>2003.423077</td>
+      <td>160.4</td>
+    </tr>
+    <tr>
+      <th>693</th>
+      <td>2003.442308</td>
+      <td>159.1</td>
+    </tr>
+    <tr>
+      <th>694</th>
+      <td>2003.461538</td>
+      <td>160.9</td>
+    </tr>
+    <tr>
+      <th>695</th>
+      <td>2003.480769</td>
+      <td>161.7</td>
+    </tr>
+  </tbody>
+</table>
+<p>695 rows × 2 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;value&quot;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">2000</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/laste-inn-data_32_0.png" src="_images/laste-inn-data_32_0.png" />
+</div>
+</div>
+<p>Vi kunne også ha laget en ny dataramme som inneholder kun data fra 2000-tallet:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">2000</span><span class="p">]</span>
+<span class="n">df2</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>time</th>
+      <th>value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>514</th>
+      <td>2000.000000</td>
+      <td>145.6</td>
+    </tr>
+    <tr>
+      <th>515</th>
+      <td>2000.019231</td>
+      <td>150.2</td>
+    </tr>
+    <tr>
+      <th>516</th>
+      <td>2000.038462</td>
+      <td>153.5</td>
+    </tr>
+    <tr>
+      <th>517</th>
+      <td>2000.057692</td>
+      <td>153.9</td>
+    </tr>
+    <tr>
+      <th>518</th>
+      <td>2000.076923</td>
+      <td>152.5</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;value&quot;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/laste-inn-data_35_0.png" src="_images/laste-inn-data_35_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="oppgave-2">
+<h2>Oppgave 2<a class="headerlink" href="#oppgave-2" title="Permalink to this headline">¶</a></h2>
+<p>I denne oppgaven skal du jobbe med filen https: // <a class="reference external" href="http://tork73.github.io/Data_behandling/posisjon.txt">tork73.github.io/Data_behandling/posisjon.txt</a>.</p>
+<p>a) Importer denne filen i et Pythonprogram.</p>
+<p>b) Plott posisjonsgrafen som funksjon av tiden.</p>
+<p>c) Plott fartsgrafen som funksjon av tiden.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># a)</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://tork73.github.io/Data_behandling/posisjon.txt&quot;</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Tid(s)</th>
+      <th>Posisjon(m)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1.0052</td>
+      <td>0.727</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1.1043</td>
+      <td>0.562</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1.2037</td>
+      <td>0.434</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1.3032</td>
+      <td>0.332</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1.4029</td>
+      <td>0.261</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># b)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s2">&quot;Tid(s)&quot;</span><span class="p">,</span> <span class="s2">&quot;Posisjon(m)&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/laste-inn-data_38_0.png" src="_images/laste-inn-data_38_0.png" />
+</div>
+</div>
+<p>For å kunne tegne fartsgrafen må vi regne ut gjennomsnittsfarten i hvert delintervall fra df. Bruker da formelen</p>
+<div class="math notranslate nohighlight">
+\[ \overline v = \frac{\Delta s}{\Delta t}\]</div>
+<p>I vårt eksempel betyr dette at vi må regne ut endring i posisjon, delt på endring i tid. Vi lager derfor en ny liste som vi kaller Fart. I denne legger vi inn alle gjennomsnittsfartene. Vi lager også en liste som vi kaller Tid. I denne legger vi inn midtpunktet til tidspunktene.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># c)</span>
+<span class="n">Fart</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># Denne skal vi fylle med fartene. </span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Posisjon(m)&quot;</span><span class="p">][</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Posisjon(m)&quot;</span><span class="p">][</span><span class="n">i</span><span class="p">])</span><span class="o">/</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Tid(s)&quot;</span><span class="p">][</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Tid(s)&quot;</span><span class="p">][</span><span class="n">i</span><span class="p">])</span>
+    <span class="n">Fart</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+
+<span class="n">Tid</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># Denne skal vi fylle med midtpunktene til tiden.</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Tid(s)&quot;</span><span class="p">][</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Tid(s)&quot;</span><span class="p">][</span><span class="n">i</span><span class="p">])</span><span class="o">/</span><span class="mi">2</span>
+    <span class="n">Tid</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+
+<span class="c1"># Nå kan vi plotte data fra de to listene: </span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Tid</span><span class="p">,</span> <span class="n">Fart</span><span class="p">,</span> <span class="s2">&quot;-o&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Tid (s)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Fart (m/s)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/laste-inn-data_40_0.png" src="_images/laste-inn-data_40_0.png" />
 </div>
 </div>
 </div>
